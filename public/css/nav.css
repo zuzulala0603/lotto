@@ -1,0 +1,10 @@
+#nav {
+  display: flex;
+  height: 7vh;
+  align-items: center;
+  padding: 20px;
+  background-color: #227dbd;
+}
+.nav__logo {
+  font-size: 30px;
+}

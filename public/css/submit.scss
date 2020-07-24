@@ -1,0 +1,27 @@
+@import "./settings/responsive.scss";
+
+#submit {
+  margin-top: 6vh;
+  display: block;
+}
+
+.submit__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#submitBtn {
+  display: flex;
+  width: 200px;
+  height: 120px;
+  align-items: center;
+  justify-content: center;
+  background-color: cadetblue;
+}
+
+/* @include onlyMobile {
+  #submit {
+    margin-top: 82vh;
+  }
+}
+ */

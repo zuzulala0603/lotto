@@ -1,12 +1,25 @@
 const fs = require("fs")
 
-let lottoData = [
-  [1, 10],
-  [2, 9],
-]
+const data2 = require("./sample")
+const { resolve } = require("path")
 
-/* lottoData = fs.readFileSync("./sample.txt", "utf-8") */
+array1 = [14, 27, 30, 31, 40, 42, 2]
 
-console.log(lottoData)
+function checkLottoNum() {
+  for (i = 0; i < data2.length; i++) {
+    compareArr(array1, data2[i])
+  }
+}
 
-console.log(typeof lottoData)
+function compareArr(arr1, arr2) {
+  arr1.sort()
+  arr2.sort()
+
+  if (JSON.stringify(arr1) === JSON.stringify(arr2)) {
+    console.log("ok")
+  } else {
+    console.log("no")
+  }
+}
+
+checkLottoNum()

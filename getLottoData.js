@@ -20,9 +20,9 @@ let result2 = []
  */
 
 async function saveLottoData() {
-  for (var i = 1; i < 3; i++) {
+  for (var i = 1; i < 10; i++) {
     await getData(i).then((data) => {
-      result[i - 1] = [data.drwNo, data.drwtNo1]
+      result[i - 1] = [data.drwtNo1, data.drwtNo2, data.drwtNo3, data.drwtNo4, data.drwtNo5, data.drwtNo6, data.bnusNo]
     })
   }
   console.log(result)

@@ -1,23 +1,27 @@
-let balls = [0, 0, 0, 0, 0, 0]
+let balls = [0, 0, 0, 0, 0, 0, 0]
 const keyboardNum = document.querySelectorAll("[data-keyNum]")
 const bollNum = document.querySelectorAll("[data-ballNum]")
-console.log(bollNum)
-
+/* console.log(bollNum)
+ */
 keyboardNum.forEach((num) => {
   num.addEventListener("click", function () {
+    let ballNum = balls.indexOf(0)
     let targetNumber = this.getAttribute("data-keyNum")
     let isExistNum = balls.find((num) => num == targetNumber)
-
+    console.log(ballNum)
     if (!isExistNum) {
       let targetBackgroundColor = getNumColor(targetNumber)
-      let ballNum = balls.indexOf(0)
       let targetBall = document.querySelector(`[data-ballNum="${ballNum}"]`)
       changeColor(targetBall, targetBackgroundColor)
       changeColor(this, targetBackgroundColor)
-      console.log(targetBall)
+      /* console.log(targetBall) */
       targetBall.innerHTML = targetNumber
       balls[ballNum] = targetNumber
-      console.log(balls)
+      /*  console.log(balls) */
+      if (ballNum == 6) {
+        console.log("쇼리졸트 실행")
+        showResult()
+      }
     } else {
       deleteBall(targetNumber)
       undoKeyboard(this)
@@ -56,7 +60,7 @@ function deleteBall(targetNumber) {
   let overlap = balls.findIndex((ele) => ele == targetNumber)
   let deleteTargetBall = document.querySelector(`[data-ballNum="${overlap}"]`)
   balls[overlap] = 0
-  console.log(deleteTargetBall)
+  /*  console.log(deleteTargetBall) */
   deleteTargetBall.style.backgroundColor = "white"
   deleteTargetBall.style.border = "1px soild black"
 }
@@ -64,4 +68,15 @@ function deleteBall(targetNumber) {
 function undoKeyboard(div) {
   div.style.backgroundColor = "#e0e0e0"
   div.style.color = "gray"
+}
+
+function showResult() {
+  $.ajax({
+    type: "post",
+    url: "/api/checkLotto",
+    data: { inputData: balls },
+    success: function (data) {
+      console.log("받아온 데이터는", data)
+    },
+  })
 }

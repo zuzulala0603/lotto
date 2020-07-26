@@ -1,33 +1,35 @@
 const express = require("express")
-
 const router = express.Router()
 
+const lottoData = require("../lottoData")
+const { resolve } = require("path")
+
+let isMatched = 0
+
 router.post("/api/checkLotto", (req, res) => {
+  isMatched = 0
   inputData = req.body.inputData
   inputNumData = []
   inputData.forEach((element) => {
     inputNumData.push(parseInt(element))
   })
-  console.log(inputNumData)
   checkLottoNum(inputNumData)
-  return res.send({ result: isMatched })
+  return res.send({ isMatched })
 })
 
 //
 
-const data2 = require("../sample")
-const { resolve } = require("path")
-let isMatched = 0
-function checkLottoNum(inputData) {
-  for (i = 0; i < data2.length; i++) {
+function checkLottoNum(inputNumData) {
+  for (i = 0; i < lottoData.length; i++) {
     if (isMatched) {
       break
     }
-    compareArr(inputData, data2[i])
+    compareArr(inputNumData, lottoData[i])
   }
 }
 
 function compareArr(arr1, arr2) {
+  isMatched = 0
   input1 = arr1.sort()
   input2 = arr2.sort()
 
@@ -35,7 +37,7 @@ function compareArr(arr1, arr2) {
     console.log("---------------Matched")
     isMatched = 1
   } else {
-    console.log("---------------FAIL")
+    isMatched = 0
   }
 }
 

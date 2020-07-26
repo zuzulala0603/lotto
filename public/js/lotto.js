@@ -1,26 +1,32 @@
 let balls = [0, 0, 0, 0, 0, 0, 0]
 const keyboardNum = document.querySelectorAll("[data-keyNum]")
 const bollNum = document.querySelectorAll("[data-ballNum]")
-/* console.log(bollNum)
- */
+
 keyboardNum.forEach((num) => {
   num.addEventListener("click", function () {
     let ballNum = balls.indexOf(0)
     let targetNumber = this.getAttribute("data-keyNum")
     let isExistNum = balls.find((num) => num == targetNumber)
+    let hasZero = balls.includes(0)
     console.log(ballNum)
     if (!isExistNum) {
       let targetBackgroundColor = getNumColor(targetNumber)
       let targetBall = document.querySelector(`[data-ballNum="${ballNum}"]`)
-      changeColor(targetBall, targetBackgroundColor)
-      changeColor(this, targetBackgroundColor)
-      /* console.log(targetBall) */
-      targetBall.innerHTML = targetNumber
-      balls[ballNum] = targetNumber
+
+      if (hasZero) {
+        changeColor(targetBall, targetBackgroundColor)
+        changeColor(this, targetBackgroundColor)
+        targetBall.innerHTML = targetNumber
+        balls[ballNum] = targetNumber
+      } else {
+        return false
+      }
+
       /*  console.log(balls) */
       if (ballNum == 6) {
         console.log("쇼리졸트 실행")
         showResult()
+        document.getElementById("keyboard").style.display = "none"
       }
     } else {
       deleteBall(targetNumber)
@@ -76,7 +82,11 @@ function showResult() {
     url: "/api/checkLotto",
     data: { inputData: balls },
     success: function (data) {
-      console.log("받아온 데이터는", data)
+      console.log(data)
     },
   })
+}
+
+async function winLotto() {
+  console.log("goo")
 }

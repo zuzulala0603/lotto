@@ -8,17 +8,16 @@
   margin: auto;
   min-height: 42vh;
   margin-top: 10vh;
-  background-color: goldenrod;
+  background-color: #f8f8f8;
+  /* background-color: goldenrod; */
 }
 
 .keyboard__left {
   width: 50%;
-  background-color: grey;
 }
 
 .keyboard__right {
   width: 50%;
-  background-color: grey;
 }
 
 .keyboard__line {
@@ -27,33 +26,51 @@
   display: flex;
   width: 100%;
   height: 25%;
-  padding: 20px 0;
+  padding: 10px 2px;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: lightgrey;
+  -ms-flex-align: center;
+  align-items: center;
+  /*   background-color: lightgrey; */
 }
 
 .keyboard__num {
+  background-color: #e0e0e0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 50px;
-  height: 50px;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
   border: 1px solid black;
+  border-radius: 10px;
+  color: #b2b2b2;
+  font-size: 30px;
+  -webkit-box-shadow: 0.5px 0.5px 0.5px 0.5px gray;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px gray;
+}
+
+.keyboard__num:hover {
+  background-color: cornflowerblue;
+  color: white;
 }
 
 .padding {
   border: none;
+  background-color: #f8f8f8;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.padding:hover {
+  background-color: inherit;
 }
 
 @media (max-width: 757px) {
@@ -62,9 +79,15 @@
   }
   .keyboard__left,
   .keyboard__right {
-    background-color: chartreuse;
     display: block;
     width: 100%;
   }
 }
-/*# sourceMappingURL=keyboard.css.map */
+
+@media (max-width: 1024px) {
+  .keyboard__num {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}

@@ -13,7 +13,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: chocolate;
+  /*   background-color: #f0f0f0; */
 }
 
 .ball {
@@ -29,7 +29,11 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background-color: darkgrey;
+  font-size: 30px;
+  color: white;
+  /* background: linear-gradient(to right, white, lightgray); */
+  -webkit-box-shadow: 1.2px 1.2px 1.2px 1.2px black;
+          box-shadow: 1.2px 1.2px 1.2px 1.2px black;
 }
 
 @media (max-width: 757px) {

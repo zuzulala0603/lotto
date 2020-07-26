@@ -6,9 +6,8 @@
   margin: auto;
   justify-content: space-evenly;
   align-items: center;
-  background-color: chocolate;
+  /*   background-color: #f0f0f0; */
 }
-
 .ball {
   display: flex;
   justify-content: center;
@@ -16,7 +15,10 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background-color: darkgrey;
+  font-size: 30px;
+  color: white;
+  /* background: linear-gradient(to right, white, lightgray); */
+  box-shadow: 1.2px 1.2px 1.2px 1.2px black;
 }
 
 @include onlyMobile {

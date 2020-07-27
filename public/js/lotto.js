@@ -1,4 +1,4 @@
-let balls = [0, 0, 0, 0, 0, 0, 0]
+let balls = [0, 0, 0, 0, 0, 0]
 const keyboardNum = document.querySelectorAll("[data-keyNum]")
 const bollNum = document.querySelectorAll("[data-ballNum]")
 
@@ -23,7 +23,7 @@ keyboardNum.forEach((num) => {
       }
 
       /*  console.log(balls) */
-      if (ballNum == 6) {
+      if (ballNum == 5) {
         console.log("쇼리졸트 실행")
         showResult()
         document.getElementById("keyboard").style.display = "none"

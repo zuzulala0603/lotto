@@ -1,1 +1,0 @@
-[drwNo1,drwNo2,drwNo3,drwNo4,drwNo5,drwNo6, 보너스넘버, 회차, 당첨금]

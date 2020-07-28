@@ -12,6 +12,7 @@ let winLotto = []
 router.post("/api/checkLotto", (req, res) => {
   isFist = 0
   isSecond = 0
+  isThrid = 0
   inputData = req.body.inputData
   inputNumData = []
   inputData.forEach((element) => {
@@ -20,10 +21,14 @@ router.post("/api/checkLotto", (req, res) => {
   checkLottoNum(inputNumData)
   console.log("---------------END-----------------")
   if (isFist) {
-    return res.send("1등")
+    return res.send({ isMatched: 1, order: 1 })
   } else if (isSecond) {
-    return res.send("2등")
+    return res.send({ isMatched: 1, order: 2 })
+  } else if (isThrid) {
+    return res.send({ isMatched: 1, order: 3 })
   }
+
+  return res.send({ isMatched: 0, order: 0 })
 })
 
 //
@@ -55,26 +60,20 @@ function checkLottoNum(inputNumData) {
         console.log("shitttt is matCHeD!")
         isFist = 1
       } else if (howManyMatched == 5) {
-        isSecond = 1
-      }
-    }
-  }
-}
-
-function compareArr(arr1, arr2) {
-  /*   isFist = 0 */
-  input1 = arr1.sort()
-  input2 = arr2.sort()
-  return new Promise((resolve, reject) => {
-    for (k = 0; k < 6; k++) {
-      for (j = 0; j < 6; j++) {
-        if (input1[k] == input2[j]) {
-          howManyMatched = howManyMatched + 1
+        isThrid = 1
+        for (m = 0; m < 6; m++) {
+          if (inputNumData[m] == lottoData[i][6]) {
+            console.log("나이스 2등")
+            isSecond = 1
+            break
+          } else {
+            console.log("아쉽지만 3등")
+            isSecond = 0
+          }
         }
       }
     }
-    resolve(howManyMatched)
-  })
+  }
 }
 
 //

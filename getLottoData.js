@@ -20,10 +20,20 @@ let result2 = []
 async function saveLottoData() {
   for (var i = 1; i < 920; i++) {
     await getData(i).then((data) => {
-      result[i - 1] = [data.drwtNo1, data.drwtNo2, data.drwtNo3, data.drwtNo4, data.drwtNo5, data.drwtNo6, data.bnusNo]
+      result[i - 1] = [
+        data.drwtNo1,
+        data.drwtNo2,
+        data.drwtNo3,
+        data.drwtNo4,
+        data.drwtNo5,
+        data.drwtNo6,
+        data.bnusNo,
+        data.drwNo,
+        data.firstWinamnt,
+      ]
     })
   }
-  console.log(result)
+
   fs.writeFileSync("lottoData.txt", JSON.stringify(result), "utf8")
 }
 

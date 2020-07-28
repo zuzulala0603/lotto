@@ -88,10 +88,33 @@ function showResult() {
   });
 }
 
+function showAlert() {
+  console.log("showalert");
+  Swal.fire("아쉽습니다", "해당 번호는 역대 로또 1~4등 당첨번호에 없습니다", "error");
+}
+
 function showPrize(order, drwNo, prizeNum) {
   document.getElementById("prize").style.display = "block";
   document.getElementById("keyboard").style.display = "none";
   document.querySelector(".prize__drwNo").innerHTML = drwNo + "회차";
+
+  switch (order) {
+    case 4:
+      prizeNum = 50000;
+      break;
+    case 3:
+      prizeNum = generateRandom(1000000, 200000);
+      break;
+    case 2:
+      prizeNum = generateRandom(40000000, 60000000);
+      break;
+    case 1:
+      if (prizeNum == 0) {
+        prizeNum = generateRandom(900000000, 120000000);
+      }
+      prizeNum = prizeNum;
+      break;
+  }
   prizeNumWithComma = addComma(prizeNum);
   document.querySelector(".prize__prizeNum").innerHTML = "당첨금 : " + prizeNumWithComma + "원";
   document.querySelector(".prize__order").innerHTML = order + "등";
@@ -101,7 +124,7 @@ function addComma(num) {
   return num.toString().replace(regexp, ",");
 }
 
-function showAlert() {
-  console.log("showalert");
-  Swal.fire("아쉽습니다", "해당 번호는 역대 로또 1~3등 당첨번호에 없습니다", "error");
-}
+var generateRandom = function (min, max) {
+  var ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
+  return ranNum;
+};

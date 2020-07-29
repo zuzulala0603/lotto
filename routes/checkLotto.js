@@ -50,7 +50,6 @@ function checkLottoNum(inputNumData) {
       break;
     }
 
-    console.log("check for문이 실행됨");
     howManyMatched = 0;
     for (k = 0; k < 6; k++) {
       if (k == 2) {
@@ -65,7 +64,6 @@ function checkLottoNum(inputNumData) {
         }
       }
       if (howManyMatched == 6) {
-        console.log("shitttt is matCHeD!");
         isFist = 1;
         drwNo = lottoData[i][7];
         prizeNum = lottoData[i][8];
@@ -73,13 +71,11 @@ function checkLottoNum(inputNumData) {
         isThrid = 1;
         for (m = 0; m < 6; m++) {
           if (inputNumData[m] == lottoData[i][6]) {
-            console.log("나이스 2등");
             isSecond = 1;
             drwNo = lottoData[i][7];
             prizeNum = lottoData[i][8];
             break;
           } else {
-            console.log("아쉽지만 3등");
             drwNo = lottoData[i][7];
             prizeNum = lottoData[i][8];
             isSecond = 0;

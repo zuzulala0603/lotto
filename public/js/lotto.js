@@ -94,7 +94,8 @@ function showAlert() {
 }
 
 function showPrize(order, drwNo, prizeNum) {
-  document.getElementById("prize").style.display = "block";
+  document.getElementById("prize").style.display = "flex";
+  document.querySelector(".replay").style.display = "flex";
   document.getElementById("keyboard").style.display = "none";
   document.querySelector(".prize__drwNo").innerHTML = drwNo + "회차";
 
@@ -116,8 +117,8 @@ function showPrize(order, drwNo, prizeNum) {
       break;
   }
   prizeNumWithComma = addComma(prizeNum);
-  document.querySelector(".prize__prizeNum").innerHTML = "당첨금 : " + prizeNumWithComma + "원";
-  document.querySelector(".prize__order").innerHTML = order + "등";
+  document.querySelector(".prize__prizeNum").innerHTML = "🎉당첨금 : " + prizeNumWithComma + "원";
+  document.querySelector(".prize__order").innerHTML = " (" + order + "등" + ")";
 }
 function addComma(num) {
   var regexp = /\B(?=(\d{3})+(?!\d))/g;
